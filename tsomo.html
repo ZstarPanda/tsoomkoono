@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тсоомоо-д зориулсан хайрын илэрхийлэл</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to bottom right, #ffe6f0, #fff8fb);
+    overflow-x: hidden;
+  }
+
+  .heart {
+    position: fixed;
+    color: #ff7096;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.3); opacity: 0; }
+  }
+
+  .container {
+    text-align: center;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2em;
+    color: #ff4d79;
+    margin-top: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  p {
+    font-size: 1.1em;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin-top: 10px;
+    animation: fadeIn 3s ease-in-out;
+  }
+
+  .photos {
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .photos img {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.4s;
+  }
+  .photos img:hover { transform: scale(1.05); }
+
+  .video {
+    margin-top: 25px;
+    position: relative;
+    display: inline-block;
+  }
+  .video video {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  /* Mute/Unmute button */
+  #soundToggle {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 112, 150, 0.9);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  #soundToggle:hover {
+    background-color: #ff4d79;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .letter-container {
+    margin-top: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .letter-container p {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: all 0.8s ease;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 15px;
+  }
+  .letter-container p.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .question { margin-top: 40px; }
+  .btns { display: flex; justify-content: center; gap: 20px; margin-top: 20px; position: relative; }
+  button {
+    background-color: #ff7096;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  button:hover { transform: scale(1.1); background-color: #ff4d79; }
+  #noBtn { position: relative; }
+
+  .hidden { display: none; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 1.6em; }
+    p { font-size: 1em; }
+    .photos img { width: 120px; height: 120px; }
+    #soundToggle {
+      right: 10px;
+      top: auto;
+      bottom: -50px;
+      transform: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Өнөөдөр чиний минь төрсөн өдөр 🎂💗</h1>
+    <p>Happy Birthday my sunshine 💖<br>Чамтай хамт өнгөрүүлсэн бүх мөчүүд хамгийн сайхан нь.</p>
+
+    <div class="photos">
+      <img src="tsoomo.jpg" alt="Tsoomoo 1">
+      <img src="bidnxoyr.jpeg" alt="Tsoomoo 2">
+      <img src="panda.png" alt="Tsoomoo 3">
+    </div>
+
+    <div class="video">
+      <video id="loveVideo" src="copy_24F958B7-1ED8-4FB3-9319-4F873FBB64A9.mov" autoplay loop muted playsinline></video>
+      <button id="soundToggle">🔇</button>
+    </div>
+
+    <div class="letter-container">
+      <div id="letters">
+        <p>Өдрийн мэнд хүргэе! 💖</p>
+        <p>Өнөөдөр бол чиний минь хувьд маш чухал өдөр. Яагаад гэвэл чи минь 17 нас хүрч байна шүү дээ 😍</p>
+        <p>Тиймээс чамдаа төрсөн өдрийн мэндийг хүргье! Зөндөө их хайртай шүү 💕</p>
+        <p>Энэ мөчийг тохиолдуулаад чи минь нэг зүйлийг асуух гэсэн юм… 💌</p>
+      </div>
+    </div>   
+
+    <div class="question">
+      <h2>чи миний найз охин болох уу? 💞</h2>
+      <div class="btns">
+        <button id="yesBtn">Тийм ❤️</button>
+        <button id="noBtn">Үгүй 😝</button>
+      </div>
+    </div>
+
+    <h2 id="response" class="hidden">YAAAY!! I knew you would say that💕 zza odo tegvl ergeed xardaa</h2>
+  </div>
+
+  <script>
+    // Floating hearts
+    const heartColors = ['#ff7096','#ffb3c6','#ff8fab'];
+    setInterval(()=>{
+      const heart=document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML='❤️';
+      heart.style.left=Math.random()*100+'vw';
+      heart.style.color=heartColors[Math.floor(Math.random()*heartColors.length)];
+      heart.style.fontSize=Math.random()*20+15+'px';
+      heart.style.animationDuration=4+Math.random()*4+'s';
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),7000);
+    },400);
+
+    // No button runs away
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 200);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    // Confetti when "Yes" is clicked
+    const yesBtn = document.getElementById('yesBtn');
+    const response = document.getElementById('response');
+    yesBtn.addEventListener('click', () => {
+      response.classList.remove('hidden');
+      createConfetti();
+      window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'});
+    });
+
+    function createConfetti() {
+      for(let i=0;i<80;i++){
+        const conf=document.createElement('div');
+        conf.classList.add('confetti');
+        conf.style.position='fixed';
+        conf.style.width='8px';
+        conf.style.height='8px';
+        conf.style.background=heartColors[Math.floor(Math.random()*heartColors.length)];
+        conf.style.left=Math.random()*100+'vw';
+        conf.style.top='-10px';
+        conf.style.opacity=Math.random();
+        conf.style.transform=`rotate(${Math.random()*360}deg)`;
+        conf.style.animation=`fall ${3+Math.random()*2}s linear forwards`;
+        document.body.appendChild(conf);
+        setTimeout(()=>conf.remove(),5000);
+      }
+    }
+
+    const style=document.createElement('style');
+    style.innerHTML=`@keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity:0; } }`;
+    document.head.appendChild(style);
+
+    // Animated letter JS
+    const letters = document.querySelectorAll("#letters p");
+    const questionSection = document.querySelector(".question");
+    letters.forEach(p => p.classList.remove("show"));
+    let i = 0;
+
+    function showNextLetter() {
+      if(i < letters.length){
+        letters[i].classList.add("show");
+        i++;
+        setTimeout(showNextLetter, 1800);
+      } else {
+        questionSection.style.display = "block";
+      }
+    }
+    questionSection.style.display = "none";
+    showNextLetter();
+
+    // Mute/Unmute toggle
+    const video = document.getElementById('loveVideo');
+    const soundToggle = document.getElementById('soundToggle');
+
+    soundToggle.addEventListener('click', () => {
+      video.muted = !video.muted;
+      soundToggle.textContent = video.muted ? "🔇" : "🔊";
+    });
+  </script>
+</body>
+</html>
